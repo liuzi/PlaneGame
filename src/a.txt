@@ -1,0 +1,7 @@
+jframex=400
+jframey=600
+HeroPlaneurl=player.PNG
+HeroPlanewidth=50
+HeroPlaneheight=50
+bantwidth=30
+bantheight=30

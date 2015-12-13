@@ -1,0 +1,7 @@
+jframex=400
+jframey=600
+workaurl=images/player.PNG
+Workasizex=50
+Workasizey=50
+bantsizex=30
+bantsizey=30
