@@ -96,7 +96,7 @@ public class FlyingWork extends Thread{
 	}
 		
 	public void checkGameOverAction(){
-		if(time%1000==0){
+		if(time%360000==0){
 			if(hp.getDoubleFire()>0){
 				hp.subDoubleFire();
 			}
@@ -178,7 +178,7 @@ public class FlyingWork extends Thread{
 	//增加敌机或奖励
 	private void addEnemyPlane(){
 		Random rand = new Random();
-		int type = rand.nextInt(40);  //生成0到19的随机数
+		int type = rand.nextInt(100);  //生成0到19的随机数
 		if(type == 0&&award==null){                //随机数为0，返回bee;否则返回敌机
 			award=new Bee();			
 		}else{
@@ -269,7 +269,7 @@ public class FlyingWork extends Thread{
 				//System.out.println(vectorEnemy.get(i).isState());
 				if(!en.isState()){
 					enemy_num--;
-//					vecBants.add(new Bant(en.getX(), en.getY()));爆炸控制
+					vecBants.add(new Bant(en.getX(), en.getY()));
 					vectorEnemy.remove(i);
 					HeroPlane.hpNumber+=10;//计算分数
 				}
