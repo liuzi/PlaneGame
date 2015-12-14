@@ -5,11 +5,19 @@ import java.util.Properties;
 public class Util {
 	public static int jframex;
 	public static int jframey;
-	public static String HeroPlaneurl;
 	public static int HeroPlanewidth;
 	public static int HeroPlaneheight;
 	public static int bantheight;
 	public static int bantwidth;
+	public static String starturl;
+	public static String pauseurl;
+	public static String gameoverurl;
+	public static String HeroPlaneurl;
+	public static String bossurl;
+	public static String EnemyPlaneurl;
+	public static String bulleturl;
+	public static String banturl;
+	public static String awardurl;
 	static {
 		InputStream in=Util.class.getResourceAsStream("a.txt");
 		Properties ps=new Properties();
@@ -18,11 +26,19 @@ public class Util {
 			ps.load(in);
 			jframex=Integer.parseInt(ps.getProperty("jframex"));
 			jframey=Integer.parseInt(ps.getProperty("jframey"));
-			HeroPlaneurl=ps.getProperty("HeroPlaneurl");
 			HeroPlanewidth=Integer.parseInt(ps.getProperty("HeroPlanewidth"));
 			HeroPlaneheight=Integer.parseInt(ps.getProperty("HeroPlaneheight"));
 			bantheight=Integer.parseInt(ps.getProperty("bantheight"));
 			bantwidth=Integer.parseInt(ps.getProperty("bantwidth"));
+			starturl=ps.getProperty("starturl");
+			pauseurl=ps.getProperty("pauseurl");
+			gameoverurl=ps.getProperty("gameoverurl");
+			HeroPlaneurl=ps.getProperty("HeroPlaneurl");
+			bossurl=ps.getProperty("bossurl");
+			EnemyPlaneurl=ps.getProperty("EnemyPlaneurl");
+			bulleturl=ps.getProperty("bulleturl");
+			banturl=ps.getProperty("banturl");
+			awardurl=ps.getProperty("awardurl");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

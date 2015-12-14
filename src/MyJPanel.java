@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -15,7 +16,7 @@ public class MyJPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private FlyingWork flyingwork;
+	private static FlyingWork flyingwork;
 	private MyThread mth;
 
 	
@@ -26,6 +27,7 @@ public class MyJPanel extends JPanel {
 	private static BufferedImage imabullet;
 	private static BufferedImage imaenemyplane;
 	private static BufferedImage imabant;
+	private static BufferedImage imaaward;
 	
 	/*init MyJPanel such as add listen, FlyingWork,MyThread*/
 	public MyJPanel(){
@@ -45,26 +47,22 @@ public class MyJPanel extends JPanel {
 		this.mth = mth;
 	}
 	
-	/*rewrite paint*/
-	
+	/*rewrite paint*/	
 	static{
-		try{
-			//background = ImageIO.read(MyJPanel.class.getResource("picture/background.png"));
-			start = ImageIO.read(MyJPanel.class.getResource("images/start.png"));
-			pause = ImageIO.read(MyJPanel.class.getResource("images//pause.png"));
-			gameover = ImageIO.read(MyJPanel.class.getResource("images/gameover.png"));
-			imaheroplane = ImageIO.read(MyJPanel.class.getResource("images/player.PNG"));
-			//bee = ImageIO.read(MyJPanel.class.getResource("images/bee.png"));
-			imabullet = ImageIO.read(MyJPanel.class.getResource("images/fire.PNG"));
-			imaenemyplane = ImageIO.read(MyJPanel.class.getResource("images/enemy.PNG"));
-			imabant=ImageIO.read(MyJPanel.class.getResource("images/bang.PNG"));
-			//hero1 = ImageIO.read(MyJPanel.class.getResource("picture/hero1.png"));
-			
-		}catch(Exception e){
+		try {
+			start=ImageIO.read(MyJPanel.class.getResource(Util.starturl));
+			pause=ImageIO.read(MyJPanel.class.getResource(Util.pauseurl));
+			gameover=ImageIO.read(MyJPanel.class.getResource(Util.gameoverurl));
+			imabullet = ImageIO.read(MyJPanel.class.getResource(Util.bulleturl));
+			imabant=ImageIO.read(MyJPanel.class.getResource(Util.banturl));
+			imaheroplane = ImageIO.read(MyJPanel.class.getResource(Util.HeroPlaneurl));
+			imaenemyplane = ImageIO.read(MyJPanel.class.getResource(Util.EnemyPlaneurl));
+			imaaward = ImageIO.read(MyJPanel.class.getResource(Util.awardurl));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	public void paint(Graphics g){
 		super.paint(g);
 		//3.获取元素数据并显示到界面（建议开启新的方法）
@@ -74,10 +72,11 @@ public class MyJPanel extends JPanel {
 		showAllBant(g);
 		paintScore(g);
 		paintState(g);
+		
 	}
+	
 	//画状态
 		public void paintState(Graphics g){
-		
 			switch(GameState.gamestate){
 			case START:           //启动状态画启动图
 				g.drawImage(start,0,0,null);
@@ -95,7 +94,7 @@ public class MyJPanel extends JPanel {
 		}
 	/*show Bullet effect*/
 	//画子弹
-	private void showBullet(Graphics g) {
+	private void showBullet(Graphics g)  {
 		// TODO Auto-generated method stub
 		Vector<Bullet> vBullets=flyingwork.getvectorBullet();
 		for(Bullet f:vBullets){
@@ -109,8 +108,12 @@ public class MyJPanel extends JPanel {
 	}
 	/*show Enemy effect*/
 	//画敌机
-	private void showEnemy(Graphics g) {
+	private void showEnemy(Graphics g){
 		// TODO Auto-generated method stub
+		Bee aw=flyingwork.getAward();
+		if(aw!=null){
+			g.drawImage(imaaward, aw.x, aw.y, aw.width,aw.height,this);
+		}
 		Vector<EnemyPlane> Enemys=flyingwork.getVector();
 		for( int i=Enemys.size()-1;i>=0;i--){
 			EnemyPlane f=Enemys.get(i);
@@ -131,7 +134,7 @@ public class MyJPanel extends JPanel {
 	/*show  score*/
 	public void showHeroPlane(Graphics g){
 		HeroPlane hp=flyingwork.gethp();
-//		Image ima=new ImageIcon(hp.getDirurl()).getImage();
+//		Image ima=new ImageIcon(hp.getDirurl()).getImage();		
 		int x=hp.getX()-hp.getWidth()/2;
 		int y=hp.getY()-hp.getHeight()/2;
 		g.drawImage(imaheroplane,x,y,hp.getWidth(),hp.getHeight(),this);
@@ -145,14 +148,14 @@ public class MyJPanel extends JPanel {
 		g.drawString(num, 20, 25);
 		g.drawString("LIFE: " + HeroPlane.getLife(),20, 45);				                    
 	}
+	//爆炸效果
 	/*show bant effect*/
 	private void showAllBant(Graphics g) {
 		Vector<Bant> vb=flyingwork.getVecBants();
 		for(int i=vb.size()-1;i>=0;i--){
 			Bant bant=vb.get(i);
 			int x=bant.getX()-bant.getWidth()/2;
-			int y=bant.getY()-bant.getHeight()/2;
-//			Image img=new ImageIcon(bant.getDirurl()).getImage();
+			int y=bant.getY()-bant.getHeight()/2;	
 			g.drawImage(imabant, x, y, x+bant.getWidth(),y+bant.getHeight(),
 					65*bant.getPNGnumber(),0,65*(bant.getPNGnumber()+1),65,this);
 

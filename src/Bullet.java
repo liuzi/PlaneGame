@@ -5,14 +5,12 @@ public class Bullet extends FlyingObject {
 	 */
 	//private int speed = 3;  //子弹速度
 	private boolean state;
-
 	//默认子弹填充背景
 	public Bullet(int x,int y){
 	    super(x,y);
 	  
 		this.width=15;
 		this.height=18;
-		this.dirurl="enemy.PNG";
 		state=true;
    }
 	//设置子弹填充背景
@@ -20,7 +18,6 @@ public class Bullet extends FlyingObject {
 	    super(x,y);
 		this.width=15;
 		this.height=18;
-		this.dirurl=dirurl;
 		state=true;
    }
    

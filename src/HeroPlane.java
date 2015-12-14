@@ -7,17 +7,18 @@ public class HeroPlane extends FlyingObject{
 	private boolean right;
 	public static int hpNumber;//英雄机得分
 	private boolean isBullet;
+	private int doubleFire; 
 	private  int step;//速度控制
 	/**
 	 * @param args
 	 */
 	public HeroPlane(){
 		isBullet=false;
-		this.x=100;
+		doubleFire=0;
+		this.x=Util.jframex/2;
 		this.y=500;
 		this.width=Util.HeroPlanewidth;
 		this.height=Util.HeroPlaneheight;
-		this.dirurl=Util.HeroPlaneurl;
 		life = 3; 
 		up=false;
 		down=false;
@@ -86,18 +87,6 @@ public class HeroPlane extends FlyingObject{
 		x+=step;
 		
 	}
-	
-    public boolean hit(FlyingObject other){
-    	int x1 = other.x - this.width/2;
-    	int x2 = other.x + other.width + this.width/2;
-    	int y1 = other.y - this.height/2;
-    	int y2 = other.y + other.height + this.height/2;
-    	int hx = this.x + this.width/2;
-    	int hy = this.y + this.height/2;
-    	return hx > x1 && hx < x2
-    			&&
-    		   hy > y1 && hy < y2;
-    }
     
     //加命
     public void addLife(){
@@ -111,6 +100,19 @@ public class HeroPlane extends FlyingObject{
     public void subtractLife(){
     	life--;
     } 
+    public void addDoubleFire(){
+    	doubleFire += 40;
+    }
+    public void subDoubleFire(){
+    	doubleFire -= 40;
+    }
+    public void resetDoubleFire(){
+    	this.doubleFire = 0;
+    }
+	public int getDoubleFire(){
+		return doubleFire;
+	}
+
 
 	//已控制飞机不出界故返回false
 	@Override
@@ -118,5 +120,17 @@ public class HeroPlane extends FlyingObject{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	//被敌机撞
+    public boolean hit(FlyingObject other){
+    	int x1 = other.x - this.width/2;
+    	int x2 = other.x + other.width + this.width/2;
+    	int y1 = other.y - this.height/2;
+    	int y2 = other.y + other.height + this.height/2;
+    	int hx = this.x + this.width/2;
+    	int hy = this.y + this.height/2;
+    	return hx > x1 && hx < x2
+    			&&
+    		   hy > y1 && hy < y2;
+    }
 }

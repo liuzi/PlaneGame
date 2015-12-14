@@ -26,8 +26,7 @@ public class MyThread implements MouseMotionListener,MouseListener,KeyListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		//System.out.println(e.getButton());
-		switch(GameState.gamestate){
-		
+		switch(GameState.gamestate){		
 		case START:
 			GameState.transform(GState.RUNNING);
 //			flyingwork.interrupt();
@@ -76,9 +75,11 @@ public class MyThread implements MouseMotionListener,MouseListener,KeyListener{
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		flyingwork.gethp().setX(e.getX());
-		flyingwork.gethp().setY(e.getY());
-	//System.out.println(flyingwork.gethp().getX());
+		if(GameState.gamestate==GState.RUNNING){
+			flyingwork.gethp().setX(e.getX());
+			flyingwork.gethp().setY(e.getY());
+		}
+		//System.out.println(flyingwork.gethp().getX());
 		
 	}
 	@Override

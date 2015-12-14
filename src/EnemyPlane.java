@@ -13,7 +13,6 @@ public class EnemyPlane extends FlyingObject{
 		super(x,y);
 		this.width=25;
 		this.height=25;
-		this.dirurl="enemy.PNG";
 		enemy_numvers=0;
 		isBullet=true;
 		state=true;
@@ -24,7 +23,6 @@ public class EnemyPlane extends FlyingObject{
 		this.y=500;
 		this.width=50;
 		this.height=50;
-		this.dirurl="enemy.PNG";
 		state=true;
     }
 	public boolean isBullet() {
@@ -43,7 +41,7 @@ public class EnemyPlane extends FlyingObject{
 		//int x=(int)(Math.random()*256);
 		
 		if(isBullet()&&enemy_numvers%150==0){
-			vectoreEnemyBullet.add(new Bullet(x,y,"images/Bullet.PNG"));
+			vectoreEnemyBullet.add(new Bullet(x,y,Util.bulleturl));
 			//System.out.println(E.getvectoreEnemyBullet());
 			enemy_numvers=0;
 	//		E.setBullet(false);
@@ -66,9 +64,6 @@ public class EnemyPlane extends FlyingObject{
 	}
 	public void setState(boolean state) {
 		this.state = state;
-	}
-	public int getScore(){
-		return 5;
 	}
 	@Override
 	public boolean outOfBounds() {

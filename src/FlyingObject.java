@@ -2,7 +2,6 @@
 public abstract class FlyingObject {
 	protected int x;//横坐标
 	protected int y;//纵坐标
-	protected String dirurl;//图片地址
 	protected int width;//横向长度
 	protected int height;//纵向长度
 	
@@ -36,18 +35,6 @@ public abstract class FlyingObject {
 		this.y=y;
 		
 	}
-
-	public String getDirurl() {
-		// TODO Auto-generated method stub
-		return dirurl;
-	}
-
-	public void setDirurl(String dirurl) {
-		// TODO Auto-generated method stub
-		this.dirurl=dirurl;
-		
-	}
-
 	public int getWidth() {
 		// TODO Auto-generated method stub
 		return width;

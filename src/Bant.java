@@ -9,7 +9,6 @@ public class Bant extends FlyingObject{
 		this.y=y;
 		this.width=Util.bantheight;
 		this.height=Util.bantheight;
-		dirurl="bang.PNG";
 		isType=true;
 		PNGnumber=6;
 	}
@@ -47,13 +46,7 @@ public class Bant extends FlyingObject{
 		return height;
 	}
 	public void setheight(int height) {
-		this.height = height;
-	}
-	public String getDirurl() {
-		return dirurl;
-	}
-	public void setDirurl(String dirurl) {
-		this.dirurl = dirurl;
+		this.height = height; 
 	}
 	public boolean isFire() {
 		return isFire;

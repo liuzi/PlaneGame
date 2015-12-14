@@ -1,7 +1,15 @@
 jframex=400
 jframey=600
-HeroPlaneurl=player.PNG
 HeroPlanewidth=50
 HeroPlaneheight=50
 bantwidth=30
 bantheight=30
+starturl=images/start.png
+pauseurl=images/pause.png
+gameoverurl=images/gameover.png
+HeroPlaneurl=images/player.PNG
+bossurl=images/boss1.PNG
+EnemyPlaneurl=images/enemy.PNG
+bulleturl=images/fire.PNG
+banturl=images/bang.PNG
+awardurl=images/bee.png
