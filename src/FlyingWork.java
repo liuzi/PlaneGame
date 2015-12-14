@@ -186,7 +186,7 @@ public class FlyingWork extends Thread{
 				int x=(int)(Math.random()*256);
 				vectorEnemy.add(new EnemyPlane(x,0));
 				enemy_num++;
-				}
+			}
 		}
 		
 	}
