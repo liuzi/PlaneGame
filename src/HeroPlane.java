@@ -6,6 +6,7 @@ public class HeroPlane extends FlyingObject{
 	private boolean left;
 	private boolean right;
 	public static int hpNumber;//英雄机得分
+	
 	private boolean isBullet;
 	private int doubleFire; 
 	private  int step;//速度控制
@@ -98,7 +99,9 @@ public class HeroPlane extends FlyingObject{
     }
     //减命
     public void subtractLife(){
-    	life--;
+    	if(life>0){
+    		life--;
+    	}
     } 
     public void addDoubleFire(){
     	doubleFire += 40;

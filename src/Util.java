@@ -9,6 +9,7 @@ public class Util {
 	public static int HeroPlaneheight;
 	public static int bantheight;
 	public static int bantwidth;
+	public static String backgroundurl;
 	public static String starturl;
 	public static String pauseurl;
 	public static String gameoverurl;
@@ -30,6 +31,7 @@ public class Util {
 			HeroPlaneheight=Integer.parseInt(ps.getProperty("HeroPlaneheight"));
 			bantheight=Integer.parseInt(ps.getProperty("bantheight"));
 			bantwidth=Integer.parseInt(ps.getProperty("bantwidth"));
+			backgroundurl=ps.getProperty("backgroundurl");
 			starturl=ps.getProperty("starturl");
 			pauseurl=ps.getProperty("pauseurl");
 			gameoverurl=ps.getProperty("gameoverurl");

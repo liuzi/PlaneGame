@@ -19,7 +19,7 @@ public class MyJPanel extends JPanel {
 	private static FlyingWork flyingwork;
 	private MyThread mth;
 
-	
+	private static BufferedImage imabg;
 	private static BufferedImage start;
 	private static BufferedImage pause;
 	private static BufferedImage gameover;
@@ -28,10 +28,28 @@ public class MyJPanel extends JPanel {
 	private static BufferedImage imaenemyplane;
 	private static BufferedImage imabant;
 	private static BufferedImage imaaward;
+
+	static{
+		try {
+			imabg=ImageIO.read(MyJPanel.class.getResource(Util.backgroundurl));
+			start=ImageIO.read(MyJPanel.class.getResource(Util.starturl));
+			pause=ImageIO.read(MyJPanel.class.getResource(Util.pauseurl));
+			gameover=ImageIO.read(MyJPanel.class.getResource(Util.gameoverurl));
+			imabullet = ImageIO.read(MyJPanel.class.getResource(Util.bulleturl));
+			imabant=ImageIO.read(MyJPanel.class.getResource(Util.banturl));
+			imaheroplane = ImageIO.read(MyJPanel.class.getResource(Util.HeroPlaneurl));
+			imaenemyplane = ImageIO.read(MyJPanel.class.getResource(Util.EnemyPlaneurl));
+			imaaward = ImageIO.read(MyJPanel.class.getResource(Util.awardurl));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	/*init MyJPanel such as add listen, FlyingWork,MyThread*/
 	public MyJPanel(){
-		setBackground(Color.black);
+//		setForeground(imabg);
+		
 		flyingwork=new FlyingWork(this);
 		flyingwork.start();
 		mth=new MyThread(flyingwork);
@@ -48,24 +66,11 @@ public class MyJPanel extends JPanel {
 	}
 	
 	/*rewrite paint*/	
-	static{
-		try {
-			start=ImageIO.read(MyJPanel.class.getResource(Util.starturl));
-			pause=ImageIO.read(MyJPanel.class.getResource(Util.pauseurl));
-			gameover=ImageIO.read(MyJPanel.class.getResource(Util.gameoverurl));
-			imabullet = ImageIO.read(MyJPanel.class.getResource(Util.bulleturl));
-			imabant=ImageIO.read(MyJPanel.class.getResource(Util.banturl));
-			imaheroplane = ImageIO.read(MyJPanel.class.getResource(Util.HeroPlaneurl));
-			imaenemyplane = ImageIO.read(MyJPanel.class.getResource(Util.EnemyPlaneurl));
-			imaaward = ImageIO.read(MyJPanel.class.getResource(Util.awardurl));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 	public void paint(Graphics g){
 		super.paint(g);
 		//3.获取元素数据并显示到界面（建议开启新的方法）
+		g.drawImage(imabg,0,0,null); 
 		showHeroPlane(g);
 		showBullet(g);
 		showEnemy(g);

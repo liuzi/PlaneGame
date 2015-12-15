@@ -19,7 +19,7 @@ public class Bee extends FlyingObject{
 		return awardType;
 	}
     public void step(){   	
-    		if(x >= 380 - this.width){
+    		if(x >= Util.jframex - this.width){
         		xSpeed = -abs_x;
     		
     		}else if(x <= 0){
@@ -32,7 +32,7 @@ public class Bee extends FlyingObject{
 	
 	@Override
 	public boolean outOfBounds() {
-		return this.y > 560;  
+		return this.y > Util.jframey;  
 	}
 	
 

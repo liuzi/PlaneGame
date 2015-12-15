@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Vector;
@@ -15,6 +16,7 @@ public class FlyingWork extends Thread{
 	private Vector<Bant> vecBants=new Vector<Bant>();//爆炸效果
 	private Vector<Bullet> vectorBullet=new Vector<Bullet>();//子弹集合
 	private Vector<EnemyPlane> vectorEnemy=new Vector<EnemyPlane>();//敌机集合
+	//private SQLConnect sqlconnect=new SQLConnect();
 	
 	public FlyingWork(JPanel jPanel ){
 		//2初始化，对象初始化
@@ -96,7 +98,7 @@ public class FlyingWork extends Thread{
 	}
 		
 	public void checkGameOverAction(){
-		if(time%360000==0){
+		if(time%1000==0){
 			if(hp.getDoubleFire()>0){
 				hp.subDoubleFire();
 			}
@@ -148,7 +150,8 @@ public class FlyingWork extends Thread{
 					if(hp.shootBy(vectorbullet.get(j))){
 						hp.subtractLife();
 						hp.resetDoubleFire();
-						vectorbullet.remove(j);	
+						//vectorbullet.get(j).setState(false);
+						vectorbullet.remove(j);
 					}
 				}
 			}	
@@ -278,6 +281,14 @@ public class FlyingWork extends Thread{
 	
 	public void clean() {
 		// TODO Auto-generated method stub
+//		sqlconnect.connect();
+		SocketClient so=new SocketClient();
+		try {
+			so.connectServer(HeroPlane.hpNumber);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		hp = new HeroPlane();//清理现场
 		vectorEnemy = new Vector<EnemyPlane>();;
 		vectorBullet =new Vector<Bullet>();
