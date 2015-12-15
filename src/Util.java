@@ -17,6 +17,7 @@ public class Util {
 	public static String bossurl;
 	public static String EnemyPlaneurl;
 	public static String bulleturl;
+	public static String enemybulleturl;
 	public static String banturl;
 	public static String awardurl;
 	static {
@@ -39,6 +40,7 @@ public class Util {
 			bossurl=ps.getProperty("bossurl");
 			EnemyPlaneurl=ps.getProperty("EnemyPlaneurl");
 			bulleturl=ps.getProperty("bulleturl");
+			enemybulleturl=ps.getProperty("enemybulleturl");
 			banturl=ps.getProperty("banturl");
 			awardurl=ps.getProperty("awardurl");
 		} catch (IOException e) {

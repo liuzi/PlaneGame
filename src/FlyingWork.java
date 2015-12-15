@@ -105,6 +105,9 @@ public class FlyingWork extends Thread{
 			time=0;
 		}
 		if(isGameOver()){    //结束游戏
+			SocketClient so=new SocketClient();
+			so.connectServer(HeroPlane.hpNumber);
+			
 			GameState.transform(GState.GAMEOVER);
 		}
 	}
@@ -134,6 +137,8 @@ public class FlyingWork extends Thread{
 			}
 			for(int j=vectorEnemy.size()-1;j>=0;j--){
 				if(vectorEnemy.get(j).shootBy(vectorBullet.get(i))){
+//					vectorEnemy.remove(j);
+//					vectorBullet.remove(i);
 					vectorEnemy.get(j).setState(false);
 					vectorBullet.get(i).setState(false);					
 				}
@@ -282,13 +287,9 @@ public class FlyingWork extends Thread{
 	public void clean() {
 		// TODO Auto-generated method stub
 //		sqlconnect.connect();
-		SocketClient so=new SocketClient();
-		try {
-			so.connectServer(HeroPlane.hpNumber);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		SocketClient so=new SocketClient();
+//		so.connectServer(HeroPlane.hpNumber);
+	
 		hp = new HeroPlane();//清理现场
 		vectorEnemy = new Vector<EnemyPlane>();;
 		vectorBullet =new Vector<Bullet>();

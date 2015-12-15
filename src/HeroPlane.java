@@ -6,7 +6,7 @@ public class HeroPlane extends FlyingObject{
 	private boolean left;
 	private boolean right;
 	public static int hpNumber;//英雄机得分
-	
+	public static int highscore;
 	private boolean isBullet;
 	private int doubleFire; 
 	private  int step;//速度控制

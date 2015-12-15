@@ -25,6 +25,7 @@ public class MyJPanel extends JPanel {
 	private static BufferedImage gameover;
 	private static BufferedImage imaheroplane;
 	private static BufferedImage imabullet;
+	private static BufferedImage imaenemybullet;
 	private static BufferedImage imaenemyplane;
 	private static BufferedImage imabant;
 	private static BufferedImage imaaward;
@@ -36,6 +37,7 @@ public class MyJPanel extends JPanel {
 			pause=ImageIO.read(MyJPanel.class.getResource(Util.pauseurl));
 			gameover=ImageIO.read(MyJPanel.class.getResource(Util.gameoverurl));
 			imabullet = ImageIO.read(MyJPanel.class.getResource(Util.bulleturl));
+			imaenemybullet = ImageIO.read(MyJPanel.class.getResource(Util.enemybulleturl));
 			imabant=ImageIO.read(MyJPanel.class.getResource(Util.banturl));
 			imaheroplane = ImageIO.read(MyJPanel.class.getResource(Util.HeroPlaneurl));
 			imaenemyplane = ImageIO.read(MyJPanel.class.getResource(Util.EnemyPlaneurl));
@@ -91,6 +93,9 @@ public class MyJPanel extends JPanel {
 				break;
 			case GAMEOVER:       //½áÊø×´Ì¬»­½áÊøÍ¼
 				g.drawImage(gameover,0,0,null);
+				g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,45));
+				g.drawString(String.valueOf(HeroPlane.hpNumber), 220, 280);
+				g.drawString(String.valueOf(HeroPlane.highscore), 220, 320);
 				break;
 			default:
 				break;
@@ -131,7 +136,7 @@ public class MyJPanel extends JPanel {
 //				Image ima2=new ImageIcon(f2.getDirurl()).getImage();
 				int x2=f2.getX()-f2.getWidth()/2;
 				int y2=f2.getY()-f2.getHeight()/2;
-				g.drawImage(imabullet,x2,y2,f2.getWidth(),f2.getHeight(),this);
+				g.drawImage(imaenemybullet,x2,y2,f2.getWidth(),f2.getHeight(),this);
 			}
 		}
 		
