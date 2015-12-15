@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-//Êó±ê¡¢¼üÅÌ¼àÌı¿ØÖÆÏß³Ì
+//Êó±ê¡¢¼üÅÌ¼àÌıÆ÷Àà
 
 public class MyThread implements MouseMotionListener,MouseListener,KeyListener{
 	/*through (FlyingWork) flyingwork's status to control the game*/

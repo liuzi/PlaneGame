@@ -65,15 +65,15 @@ public class FlyingWork extends Thread{
 		while(true){
 			//addEnemyPlane();
 			if(GameState.gamestate==GState.RUNNING){
-				addBullet();//加子弹
-				BulletMove();//子弹发射
+				addBullet();//英雄机发射子弹
+				BulletMove();//子弹轨迹控制
 				addEnemyPlane();//加敌机
 				Enemy_Move();//敌机飞行
 				allBantMove();//爆炸效果
 				HeroPlanemove();//英雄机飞行
 				collision();//英雄机子弹射中检测
 				HeroCollision();//敌机子弹射中检测
-				checkGameOverAction();//死机检验
+				checkGameOverAction();//游戏状态检验
 				timer();
 			}	
 			try {
@@ -82,7 +82,7 @@ public class FlyingWork extends Thread{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}//异常捕获
-			numvers++;
+//			numvers++;
 			for(int i=0;i<vectorEnemy.size();i++){
 				vectorEnemy.get(i).setEnemy_numvers(vectorEnemy.get(i).getEnemy_numvers()+1);
 				vectorEnemy.get(i).addEnemyBullet();

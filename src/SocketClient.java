@@ -31,7 +31,8 @@ public class SocketClient {
 	
 		try {
 //			Socket s = new Socket("222.20.70.32",5566);
-			Socket s = new Socket("10.10.213.132",5566);
+//			Socket s = new Socket("10.10.213.132",5566);
+			Socket s = new Socket("172.20.10.10",5566);
 			DataOutputStream dos = new DataOutputStream(s.getOutputStream()); //获取Socket对象的输出流，并且在外边包一层DataOutputStream管道，方便输出数据 
 			
 			try {
